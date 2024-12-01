@@ -24,9 +24,11 @@ export default function SideNavBarAdmin({ isSidebarOpen, setIsSidebarOpen }) {
                 to="/connect/investigator"
                 className="flex items-center px-4 py-2 text-gray-700 rounded-lg transition duration-300 transform hover:bg-purple-500 hover:text-white hover:scale-105 group-hover:shadow-lg"
               >
-                Connect With Investigators
+              connect
               </Link>
+              
             </li>
+            
             <li className="group">
               <Link
                 to="/create/project"

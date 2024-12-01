@@ -3,7 +3,9 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './components/context/AuthContext';
 import Login from './components/Login/Login';
 import HomeAdmin from './components/Admin/Home/HomeAdmin';
-import HomeInvestigator from '../src/components/Investigator/Home/HomeInvestigator'
+import HomeInvestigator from '../src/components/Investigator/Home/HomeInvestigator';
+import ConnectWithInvestigators from '../src/components/Admin/Home/ConnectWithInvestigator';
+import ConnectToAdmin from '../src/components/Investigator/Home/ConnectToAdmin'
 
 function ProtectedRoute({ children, allowedRole }) {
   const { user } = useAuth();
@@ -41,7 +43,22 @@ function AppRoutes() {
           </ProtectedRoute>
         } 
       />
-       
+      <Route 
+        path="connect/investigator" 
+        element={
+          <ProtectedRoute allowedRole="Admin Head">
+            <ConnectWithInvestigators />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="connect/admin" 
+        element={
+          <ProtectedRoute allowedRole="Investigator">
+            <ConnectToAdmin />
+          </ProtectedRoute>
+        } 
+      />
     </Routes>
   );
 }
@@ -57,3 +74,4 @@ function App() {
 }
 
 export default App;
+
